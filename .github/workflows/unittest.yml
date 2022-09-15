@@ -20,4 +20,10 @@ jobs:
           go-version: 1.19
 
       - name: Test
-        run: go test -v -cover
+        run: go tool cover -func=coverage.out
+
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          api-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage.out
