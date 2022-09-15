@@ -5,7 +5,7 @@
 
 # GoMAILER
 
-This is a simple CLI to send batch e-mails using a html-template and a tab-separated list of recipients.
+This is a simple CLI to send batch e-mails using a html-template and a list of recipients.
 
 ## Installation
 
