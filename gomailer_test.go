@@ -11,7 +11,7 @@ import (
 
 func TestReadUsers(t *testing.T) {
 	// Test the readUsers function
-	ps := readUsers("recipients.tsv", "\t")
+	ps := readUsers("recipients.txt", "\t")
 
 	if len(ps) == 0 {
 		t.Fatalf("No users found")
