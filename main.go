@@ -108,24 +108,24 @@ func main() {
 	var templatefile stringFlag
 	var subjectstring stringFlag
 
-	flag.Var(&userfile, "userfile", "user file containing email and name as tab separated values")
-	flag.Var(&templatefile, "template", "HTML template file of the email")
-	flag.Var(&subjectstring, "subject", "Subject of the email")
+	flag.Var(&userfile, "u", "user file containing email and name as tab separated values")
+	flag.Var(&templatefile, "t", "HTML template file of the email")
+	flag.Var(&subjectstring, "s", "Subject of the email")
 
 	// Parse the command line flags
 	flag.Parse()
 
 	// Check if the userfile and templatefile flags are set
 	if !userfile.set {
-		log.Fatalln("-userfile not set")
+		log.Fatalln("-u not set")
 	}
 
 	if !templatefile.set {
-		log.Fatalln("-template not set")
+		log.Fatalln("-t not set")
 	}
 
 	if !subjectstring.set {
-		log.Fatalln("-subject not set")
+		log.Fatalln("-s not set")
 	}
 
 	// Check if the files exist

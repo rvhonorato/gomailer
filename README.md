@@ -33,14 +33,14 @@ This is a simple CLI to send batch e-mails using a html-template and a tab-separ
    ```text
    $ ./gomailer -h
    Usage of ./gomailer:
-   -subject value
+   -s value
          Subject of the email
-   -template value
+   -t value
          HTML template file of the email
-   -userfile value
+   -u value
          user file containing email and name as tab separated values
 
-   $ ./gomailer -template template.html -userfile recipients.txt -subject "Hello!"
+   $ ./gomailer -t template.html -u recipients.txt -s "Hello!"
    ```
 
 ## Testing
