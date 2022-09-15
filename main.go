@@ -1,3 +1,4 @@
+// Main package
 package main
 
 import (
@@ -57,11 +58,11 @@ func readUsers(filename string, delimiter string) []user {
 	}
 	for _, l := range lines {
 
-		email_re, _ := regexp.Compile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}`)
-		email := email_re.FindString(l)
+		emailRe, _ := regexp.Compile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}`)
+		email := emailRe.FindString(l)
 
-		user_re, _ := regexp.Compile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}.`)
-		username := user_re.Split(l, -1)[1]
+		userRe, _ := regexp.Compile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}.`)
+		username := userRe.Split(l, -1)[1]
 
 		ps = append(ps, user{
 			Email: email,
@@ -194,13 +195,13 @@ func main() {
 		var body bytes.Buffer
 		body.Write([]byte(fmt.Sprintf("Subject: %s\n%s\n\n", subjectstring.value, mimeHeaders)))
 
-		exec_err := t.Execute(&body, struct {
+		execErr := t.Execute(&body, struct {
 				Name string
 			}{
 				Name: v.Name,
 			})
-		if exec_err != nil {
-			log.Fatalln(exec_err)
+		if execErr != nil {
+			log.Fatalln(execErr)
 		}
 
 		// Send email
