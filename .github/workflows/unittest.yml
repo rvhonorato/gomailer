@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
 on:
   push:
     branches:
@@ -23,7 +26,5 @@ jobs:
         run: go tool cover -func=coverage.out
 
       - name: Run codacy-coverage-reporter
-        uses: codacy/codacy-coverage-reporter-action@v1
-        with:
-          api-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: coverage.out
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --force-coverage-parser go -r
+
