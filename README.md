@@ -1,5 +1,6 @@
 [![License: 0BSD](https://img.shields.io/badge/license-0BSD-informational)](https://opensource.org/licenses/0BSD)
 [![CI](https://github.com/rvhonorato/gomailer/actions/workflows/unittest.yml/badge.svg)](https://github.com/rvhonorato/gomailer/actions/workflows/unittest.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/53caceaf22504b2c8020ca62a6d45367)](https://www.codacy.com/gh/rvhonorato/gomailer/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rvhonorato/gomailer&amp;utm_campaign=Badge_Grade)
 
 # GoMAILER
 
