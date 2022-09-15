@@ -22,10 +22,8 @@ This is a simple CLI to send batch e-mails using a html-template and a tab-separ
 
 1. Create a template file (e.g. `template.html`)
    - The template must have a `{{.Name}}` placeholder for the recipient's name
-2. Create a recipient list file (e.g. `recipients.tsv`)
-   - The file must be tab-separated
-   - The first column must be the recipient's e-mail
-   - The second column must be the recipient's name
+2. Create a recipient list file (e.g. `recipients.txt`)
+   - In each line, the e-mail is captured as with a regular expression, all the rest is considered to be the recipients name
 3. Define `GMAIL_USER` and `GMAIL_PASSWORD` system variables, by default it uses gmail as the server; if you want to use another server, you need to change it in the source code.
 
    - `GMAIL_PASSWORD` is the [app password](https://support.google.com/accounts/answer/185833?hl=en), not the account password
@@ -42,7 +40,7 @@ This is a simple CLI to send batch e-mails using a html-template and a tab-separ
    -userfile value
          user file containing email and name as tab separated values
 
-   $ ./gomailer -template template.html -userfile recipients.tsv -subject "Hello!"
+   $ ./gomailer -template template.html -userfile recipients.txt -subject "Hello!"
    ```
 
 ## Testing

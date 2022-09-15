@@ -11,7 +11,7 @@ import (
 	"net/smtp"
 	"os"
 	"path/filepath"
-	"strings"
+	"regexp"
 )
 
 // --------------------------------------------------------------------------------
@@ -56,11 +56,16 @@ func readUsers(filename string, delimiter string) []user {
 		panic(err)
 	}
 	for _, l := range lines {
-		// fmt.Println(l)
-		s := strings.Split(l, delimiter)
+
+		email_re, _ := regexp.Compile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}`)
+		email := email_re.FindString(l)
+
+		user_re, _ := regexp.Compile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}.`)
+		username := user_re.Split(l, -1)[1]
+
 		ps = append(ps, user{
-			Email: s[0],
-			Name:  strings.Join(s[1:], " "),
+			Email: email,
+			Name:  username,
 		})
 
 	}
@@ -165,7 +170,7 @@ func main() {
 
 	// Display the users/emails and ask for confirmation
 	for _, v := range ps {
-		log.Println(">", "Name:", "<", v.Name, ">", "email:", "<", v.Email, ">")
+		log.Println(">", "Name:", v.Name, "E-mail:", v.Email)
 	}
 
 	confirmation := confirm()
@@ -189,11 +194,14 @@ func main() {
 		var body bytes.Buffer
 		body.Write([]byte(fmt.Sprintf("Subject: %s\n%s\n\n", subjectstring.value, mimeHeaders)))
 
-		t.Execute(&body, struct {
-			Name string
-		}{
-			Name: v.Name,
-		})
+		exec_err := t.Execute(&body, struct {
+				Name string
+			}{
+				Name: v.Name,
+			})
+		if exec_err != nil {
+			log.Fatalln(exec_err)
+		}
 
 		// Send email
 		//  Sending "Bcc": messages is accomplished by including an email address in the to parameter
