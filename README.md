@@ -5,7 +5,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/53caceaf22504b2c8020ca62a6d45367)](https://www.codacy.com/gh/rvhonorato/gomailer/dashboard?utm_source=github.com&utm_medium=referral&utm_content=rvhonorato/gomailer&utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/53caceaf22504b2c8020ca62a6d45367)](https://www.codacy.com/gh/rvhonorato/gomailer/dashboard?utm_source=github.com&utm_medium=referral&utm_content=rvhonorato/gomailer&utm_campaign=Badge_Coverage)
 
-
 This is a simple CLI to send batch e-mails using a html-template and a list of recipients.
 
 ## Installation
@@ -27,14 +26,16 @@ This is a simple CLI to send batch e-mails using a html-template and a list of r
 ## Usage
 
 1.  Create a template file (e.g. `template.html`)
-    -   The template must have a `{{.Name}}` placeholder for the recipient's name
+
+    - The template must have a `{{.Name}}` placeholder for the recipient's name
 
 2.  Create a recipient list file (e.g. `recipients.txt`)
-    -   In each line, the e-mail is captured as with a regular expression, all the rest is considered to be the recipients name
+
+    - In each line, the e-mail is captured as with a regular expression, all the rest is considered to be the recipients name
 
 3.  Define `GMAIL_USER` and `GMAIL_PASSWORD` system variables, by default it uses gmail as the server; if you want to use another server, you need to change it in the source code.
 
-    -   `GMAIL_PASSWORD` is the [app password](https://support.google.com/accounts/answer/185833?hl=en), not the account password
+    - `GMAIL_PASSWORD` is the [app password](https://support.google.com/accounts/answer/185833?hl=en), not the account password
 
 4.  Execute;
 
