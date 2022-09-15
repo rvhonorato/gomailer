@@ -1,10 +1,13 @@
 package main
 
 import (
+	"errors"
 	"io"
 	"log"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // Test the functions
@@ -52,4 +55,9 @@ func TestConfirm(t *testing.T) {
 		log.Fatal(err)
 	}
 
+}
+
+func TestCheck(t *testing.T) {
+	err := errors.New("test error")
+	assert.Panics(t, func() { check(err) })
 }
