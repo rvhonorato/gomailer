@@ -1,3 +1,6 @@
+[![License: 0BSD](https://img.shields.io/badge/license-0BSD-informational)](https://opensource.org/licenses/0BSD)
+[![CI](https://github.com/rvhonorato/gomailer/actions/workflows/unittest.yml/badge.svg)](https://github.com/rvhonorato/gomailer/actions/workflows/unittest.yml)
+
 # GoMAILER
 
 This is a simple CLI to send batch e-mails using a html-template and a tab-separated list of recipients.
